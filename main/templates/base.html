@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Valley Customs{% endblock %}</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="base-container">
+        <div class="base-logo">
+            <a href="">
+                <img src="{% static 'img/cropped-logo-valley-customs-peq.png' %}" alt="Logo" class="nav-logo">
+            </a>
+        </div>
+    
+        <div class="navbar">
+            <div class="nav-item">
+                <a href="" class="nav-btn">Inicio</a>
+            </div>
+            <div class="nav-item">
+                <a href="" class="nav-btn">Quienes somos</a>
+            </div>
+            <div class="nav-item">
+                <a href="" class="nav-btn">Servicios</a>
+            </div>
+            <div class="nav-item">
+                <a href="" class="nav-btn">Contactenos</a>
+            </div>
+        </div>
+    
+        <div class="base-oea">
+            <a href="">
+                <img src="{% static 'img/logo-oea.png' %}" alt="Logo OEA" class="nav-logo">
+            </a>
+        </div>
+    </div>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

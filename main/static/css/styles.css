@@ -1,0 +1,215 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-color: #00000013 #ffffff54; /* Cambiar color de la barra de desplazamiento */
+}
+
+/* Base container styling */
+.base-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+/* Navbar styling */
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #00469d;
+    padding: 2rem;
+    border-radius: 4rem;
+    margin-top: 1rem;
+}
+
+.nav-item {
+    list-style: none;
+    margin: 0 1rem;
+}
+
+.nav-btn {
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.nav-btn:hover {
+    background-color: #e0ad64;
+    padding: 1rem;
+    color: #00469d;
+    transition: background-color 0.3s ease;
+}
+
+/* Styling for images in base-logo and base-oea */
+.base-logo img {
+    width: 150px;
+    height: auto;
+    max-width: 100%;
+}
+
+.base-oea img {
+    width: 200px;
+    height: auto;
+    max-width: 100%;
+}
+
+/* Full-width slider styling */
+.slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 5rem; /* Evitar que la barra fija lo cubra */
+
+}
+
+.slider {
+    display: flex;
+    transition: transform 1s cubic-bezier(0.25, 0.8, 0.25, 1); /* Animación más suave */
+}
+
+.slide {
+    flex: 0 0 100%;
+    height: auto;
+    position: relative; /* Necesario para posicionar el gradiente */
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    max-height: 100vh; /* Limitar altura en pantallas pequeñas */
+    object-fit: contain; /* Asegura que la imagen no se recorte */
+    display: block;
+    z-index: 1; /* Asegura que la imagen esté por debajo del gradiente */
+    
+}
+
+/* Agregar el difuminado en los bordes superior e inferior */
+.slide::before,
+.slide::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 10%; /* Ajusta la altura del difuminado */
+    z-index: 2; /* Asegura que el difuminado esté por encima de la imagen */
+}
+
+.slide::before {
+    top: 0;
+    background: linear-gradient(to bottom, rgb(255, 255, 255), transparent); /* Difuminado superior */
+}
+
+.slide::after {
+    bottom: 0;
+    background: linear-gradient(to top, rgb(255, 255, 255), transparent); /* Difuminado inferior */
+}
+
+/* Navigation buttons */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #00469d; /* Cambiar a un color más profesional */
+    color: #fff;
+    border: none;
+    padding: 1rem 1.5rem; /* Ajustar el padding */
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    line-height: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Agregar sombra */
+    transition: background-color 0.3s, transform 0.3s; /* Agregar transición */
+}
+
+.slider-btn:hover {
+    background-color: #e0ad64; /* Color de fondo al pasar el ratón */
+    transform: translateY(-50%) scale(1.05); /* Efecto de escala al pasar el ratón */
+}
+
+.slider-btn.left {
+    left: 1rem;
+}
+
+.slider-btn.right {
+    right: 1rem;
+}
+
+/* Dots for navigation */
+.slider-dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.slider-dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.slider-dot.active {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+/* Media queries para pantallas más pequeñas */
+@media (max-width: 1024px) {
+    .slide img {
+        max-height: 60vh; /* Reducir altura máxima */
+        object-fit: contain; /* Mantener imagen completa */
+    }
+
+    .slider-btn {
+        padding: 0.8rem 1rem;
+        font-size: 1.5rem;
+    }
+
+    .slider-dots {
+        bottom: 0.5rem; /* Ajustar margen inferior */
+    }
+
+    .slider-dot {
+        width: 8px;
+        height: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .slide img {
+        max-height: 50vh; /* Limitar más en pantallas pequeñas */
+        object-fit: contain;
+    }
+
+    .slider-btn {
+        display: none; /* Opcional: ocultar botones de navegación en móviles */
+    }
+}
+
+@media (max-width: 480px) {
+    .slider-dots {
+        bottom: 0.3rem;
+    }
+
+    .slider-dot {
+        width: 6px;
+        height: 6px;
+    }
+}
