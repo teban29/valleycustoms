@@ -4,24 +4,24 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block title %}Valley Customs{% endblock %}</title>
+        <title>{% block title %}Valley Customs {% endblock %}</title>
         {% load static %}
         <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <div class="base-container">
         <div class="base-logo">
-            <a href="">
+            <a href="{% url 'home' %}">
                 <img src="{% static 'img/cropped-logo-valley-customs-peq.png' %}" alt="Logo" class="nav-logo">
             </a>
         </div>
     
         <div class="navbar">
             <div class="nav-item">
-                <a href="" class="nav-btn">Inicio</a>
+                <a href="{% url 'home' %}" class="nav-btn">Inicio</a>
             </div>
             <div class="nav-item">
-                <a href="" class="nav-btn">Quienes somos</a>
+                <a href="{% url 'quienes_somos' %}" class="nav-btn">Quienes somos</a>
             </div>
             <div class="nav-item">
                 <a href="" class="nav-btn">Servicios</a>

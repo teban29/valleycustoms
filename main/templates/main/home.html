@@ -3,10 +3,7 @@
 
 {% block title %}Valley Customs{% endblock %}
 {% block content %}
-<div class="home-container">
-    <h1>Bienvenido a Valley Customs</h1>
-    <p>Esta es la página principal de nuestra página remasterizada.</p>
-
+<section>
     <div class="slider-container">
         <div class="slider">
             <div class="slide">
@@ -20,7 +17,27 @@
             </div>
         </div>
     </div>
-</div>
+</section>
+<section>
+    <div class="info-container">
+        <hr>
+        <div class="info">
+            <h2>¿Quiénes somos?</h2>
+            <p>Somos una empresa de servicios aduaneros con más de 20 años de experiencia en el mercado. Nuestro principal objetivo es brindar un servicio de calidad y confianza a nuestros clientes.</p>
+            <a href="{% url 'quienes_somos' %}" class="btn">Leer más</a>
+        </div>
+        <div class="info">
+            <h2>Servicios</h2>
+            <p>Ofrecemos una amplia gama de servicios aduaneros, desde asesoría en trámites de importación y exportación hasta la gestión de trámites en aduanas.</p>
+            <a href="" class="btn">Leer más</a>
+        </div>
+        <div class="info">
+            <h2>Contacto</h2>
+            <p>Si desea más información sobre nuestros servicios, no dude en contactarnos. Estamos a su disposición para resolver sus dudas y brindarle la mejor atención.</p>
+            <a href="" class="btn">Leer más</a>
+        </div>
+    </div>
+</section>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const slider = document.querySelector('.slider');
