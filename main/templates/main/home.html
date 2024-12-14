@@ -16,21 +16,26 @@
         </div>
     </div>
 </div>
+<hr>
+<div class="info-buttons">
+    <button class="info-btn" data-target="quienes-somos">¿Quiénes somos?</button>
+    <button class="info-btn" data-target="servicios">Servicios</button>
+    <button class="info-btn" data-target="contacto">Contacto</button>
+</div>
 <div class="info-container">
-    <hr>
-    <div class="info">
+    <div id="quienes-somos" class="info-section active">
         <h2>¿Quiénes somos?</h2>
         <p>Somos una empresa de servicios aduaneros con más de 20 años de experiencia en el mercado. Nuestro
             principal objetivo es brindar un servicio de calidad y confianza a nuestros clientes.</p>
         <a href="{% url 'quienes_somos' %}" class="btn">Leer más</a>
     </div>
-    <div class="info">
+    <div id="servicios" class="info-section">
         <h2>Servicios</h2>
         <p>Ofrecemos una amplia gama de servicios aduaneros, desde asesoría en trámites de importación y exportación
             hasta la gestión de trámites en aduanas.</p>
         <a href="" class="btn">Leer más</a>
     </div>
-    <div class="info">
+    <div id="contacto" class="info-section">
         <h2>Contacto</h2>
         <p>Si desea más información sobre nuestros servicios, no dude en contactarnos. Estamos a su disposición para
             resolver sus dudas y brindarle la mejor atención.</p>
@@ -39,6 +44,7 @@
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
+        // Slider Functionality
         const slider = document.querySelector('.slider');
         const slides = document.querySelectorAll('.slide');
         const totalSlides = slides.length;
@@ -65,18 +71,16 @@
             updateDots();
         }
 
-        // Auto-slide every 10 seconds
         const autoSlide = setInterval(() => {
             showSlide(index + 1);
         }, 10000);
 
-        // Navigation buttons
         const leftButton = document.createElement('button');
         leftButton.classList.add('slider-btn', 'left');
         leftButton.innerHTML = '&#8249;';
         leftButton.addEventListener('click', () => {
             showSlide(index - 1);
-            clearInterval(autoSlide); // Stop auto-slide after manual navigation
+            clearInterval(autoSlide);
         });
 
         const rightButton = document.createElement('button');
@@ -84,15 +88,13 @@
         rightButton.innerHTML = '&#8250;';
         rightButton.addEventListener('click', () => {
             showSlide(index + 1);
-            clearInterval(autoSlide); // Stop auto-slide after manual navigation
+            clearInterval(autoSlide);
         });
 
-        // Add buttons to slider container
         const sliderContainer = document.querySelector('.slider-container');
         sliderContainer.appendChild(leftButton);
         sliderContainer.appendChild(rightButton);
 
-        // Dots for navigation
         const dotsContainer = document.createElement('div');
         dotsContainer.classList.add('slider-dots');
         slides.forEach((_, i) => {
@@ -101,13 +103,30 @@
             if (i === 0) dot.classList.add('active');
             dot.addEventListener('click', () => {
                 showSlide(i);
-                clearInterval(autoSlide); // Stop auto-slide after manual navigation
+                clearInterval(autoSlide);
             });
             dotsContainer.appendChild(dot);
         });
         sliderContainer.appendChild(dotsContainer);
+
+        // Info Section Toggle Functionality
+        const buttons = document.querySelectorAll('.info-btn');
+        const sections = document.querySelectorAll('.info-section');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-target');
+
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+            });
+        });
     });
-
-
 </script>
 {% endblock %}
