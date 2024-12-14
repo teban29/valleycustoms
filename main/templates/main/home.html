@@ -3,56 +3,55 @@
 
 {% block title %}Valley Customs{% endblock %}
 {% block content %}
-<section>
-    <div class="slider-container">
-        <div class="slider">
-            <div class="slide">
-                <img src="{% static 'img/slider/Banner-OEA-CUSTOMSweb.jpg' %}" alt="Imagen 1">
-            </div>
-            <div class="slide">
-                <img src="{% static 'img/slider/slider-01.png' %}" alt="Imagen 2">
-            </div>
-            <div class="slide">
-                <img src="{% static 'img/slider/slider-02.png' %}" alt="Imagen 3">
-            </div>
+<div class="slider-container">
+    <div class="slider">
+        <div class="slide">
+            <img src="{% static 'img/slider/Banner-OEA-CUSTOMSweb.jpg' %}" alt="Imagen 1">
+        </div>
+        <div class="slide">
+            <img src="{% static 'img/slider/slider-01.png' %}" alt="Imagen 2">
+        </div>
+        <div class="slide">
+            <img src="{% static 'img/slider/slider-02.png' %}" alt="Imagen 3">
         </div>
     </div>
-</section>
-<section>
-    <div class="info-container">
-        <hr>
-        <div class="info">
-            <h2>¿Quiénes somos?</h2>
-            <p>Somos una empresa de servicios aduaneros con más de 20 años de experiencia en el mercado. Nuestro principal objetivo es brindar un servicio de calidad y confianza a nuestros clientes.</p>
-            <a href="{% url 'quienes_somos' %}" class="btn">Leer más</a>
-        </div>
-        <div class="info">
-            <h2>Servicios</h2>
-            <p>Ofrecemos una amplia gama de servicios aduaneros, desde asesoría en trámites de importación y exportación hasta la gestión de trámites en aduanas.</p>
-            <a href="" class="btn">Leer más</a>
-        </div>
-        <div class="info">
-            <h2>Contacto</h2>
-            <p>Si desea más información sobre nuestros servicios, no dude en contactarnos. Estamos a su disposición para resolver sus dudas y brindarle la mejor atención.</p>
-            <a href="" class="btn">Leer más</a>
-        </div>
+</div>
+<div class="info-container">
+    <hr>
+    <div class="info">
+        <h2>¿Quiénes somos?</h2>
+        <p>Somos una empresa de servicios aduaneros con más de 20 años de experiencia en el mercado. Nuestro
+            principal objetivo es brindar un servicio de calidad y confianza a nuestros clientes.</p>
+        <a href="{% url 'quienes_somos' %}" class="btn">Leer más</a>
     </div>
-</section>
+    <div class="info">
+        <h2>Servicios</h2>
+        <p>Ofrecemos una amplia gama de servicios aduaneros, desde asesoría en trámites de importación y exportación
+            hasta la gestión de trámites en aduanas.</p>
+        <a href="" class="btn">Leer más</a>
+    </div>
+    <div class="info">
+        <h2>Contacto</h2>
+        <p>Si desea más información sobre nuestros servicios, no dude en contactarnos. Estamos a su disposición para
+            resolver sus dudas y brindarle la mejor atención.</p>
+        <a href="" class="btn">Leer más</a>
+    </div>
+</div>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const slider = document.querySelector('.slider');
         const slides = document.querySelectorAll('.slide');
         const totalSlides = slides.length;
-    
+
         let index = 0;
-    
+
         function updateDots() {
             const dots = document.querySelectorAll('.slider-dot');
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === index);
             });
         }
-    
+
         function showSlide(newIndex) {
             if (newIndex < 0) {
                 index = totalSlides - 1;
@@ -65,12 +64,12 @@
             slider.style.transform = `translateX(${offset}%)`;
             updateDots();
         }
-    
+
         // Auto-slide every 10 seconds
         const autoSlide = setInterval(() => {
             showSlide(index + 1);
         }, 10000);
-    
+
         // Navigation buttons
         const leftButton = document.createElement('button');
         leftButton.classList.add('slider-btn', 'left');
@@ -79,7 +78,7 @@
             showSlide(index - 1);
             clearInterval(autoSlide); // Stop auto-slide after manual navigation
         });
-    
+
         const rightButton = document.createElement('button');
         rightButton.classList.add('slider-btn', 'right');
         rightButton.innerHTML = '&#8250;';
@@ -87,12 +86,12 @@
             showSlide(index + 1);
             clearInterval(autoSlide); // Stop auto-slide after manual navigation
         });
-    
+
         // Add buttons to slider container
         const sliderContainer = document.querySelector('.slider-container');
         sliderContainer.appendChild(leftButton);
         sliderContainer.appendChild(rightButton);
-    
+
         // Dots for navigation
         const dotsContainer = document.createElement('div');
         dotsContainer.classList.add('slider-dots');
@@ -108,7 +107,7 @@
         });
         sliderContainer.appendChild(dotsContainer);
     });
-    
-    
+
+
 </script>
 {% endblock %}

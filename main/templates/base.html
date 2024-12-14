@@ -1,13 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block title %}Valley Customs {% endblock %}</title>
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Valley Customs {% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
+
 <body>
     <div class="base-container">
         <div class="base-logo">
@@ -15,7 +16,7 @@
                 <img src="{% static 'img/cropped-logo-valley-customs-peq.png' %}" alt="Logo" class="nav-logo">
             </a>
         </div>
-    
+
         <div class="navbar">
             <div class="nav-item">
                 <a href="{% url 'home' %}" class="nav-btn">Inicio</a>
@@ -30,14 +31,15 @@
                 <a href="" class="nav-btn">Contactenos</a>
             </div>
         </div>
-    
+
         <div class="base-oea">
-            <a href="">
-                <img src="{% static 'img/logo-oea.png' %}" alt="Logo OEA" class="nav-logo">
+            <a href="{% static 'pdf/constancia-OEA.pdf' %}" target="_blank" rel="noopener noreferrer">
+                <img src=" {% static 'img/logo-oea.png' %}" alt="Logo OEA" class="nav-logo">
             </a>
         </div>
     </div>
     {% block content %}
     {% endblock %}
 </body>
+
 </html>

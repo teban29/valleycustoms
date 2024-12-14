@@ -169,6 +169,19 @@
     background-color: rgba(255, 255, 255, 1);
 }
 
+.info-container {
+    margin-top: 5rem
+}
+
+.info-container hr {
+    border: 3px solid #00469d;
+    width: 70%;
+    margin: 1rem auto;
+    border-radius: 3rem;
+}
+
+
+
 /* Media queries para pantallas más pequeñas */
 @media (max-width: 1024px) {
     .slide img {
