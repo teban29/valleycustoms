@@ -18,15 +18,14 @@
 </div>
 <hr>
 <div class="info-buttons">
-    <button class="info-btn" data-target="quienes-somos">¿Quiénes somos?</button>
-    <button class="info-btn" data-target="servicios">Servicios</button>
-    <button class="info-btn" data-target="contacto">Contacto</button>
+    <button class="info-left-btn" data-target="quienes-somos">¿Quiénes somos?</button>
+    <button class="info-mid-btn" data-target="servicios">Servicios</button>
+    <button class="info-rigth-btn" data-target="contacto">Contacto</button>
 </div>
 <div class="info-container">
     <div id="quienes-somos" class="info-section active">
         <h2>¿Quiénes somos?</h2>
-        <p>Somos una empresa de servicios aduaneros con más de 20 años de experiencia en el mercado. Nuestro
-            principal objetivo es brindar un servicio de calidad y confianza a nuestros clientes.</p>
+        <p>Somos una agencia de aduanas con más de 30 años de experiencia en el mercado de la intermediación aduanera no solo por la presencia ininterrumpida sino también por el dominio de los requerimientos que el régimen de comercio exterior y aduanas establecen para los productos de importación, exportación y tránsito aduanero.</p>
         <a href="{% url 'quienes_somos' %}" class="btn">Leer más</a>
     </div>
     <div id="servicios" class="info-section">
@@ -110,17 +109,25 @@
         sliderContainer.appendChild(dotsContainer);
 
         // Info Section Toggle Functionality
-        const buttons = document.querySelectorAll('.info-btn');
+        const buttons = document.querySelectorAll('.info-left-btn, .info-mid-btn, .info-rigth-btn');
         const sections = document.querySelectorAll('.info-section');
 
         buttons.forEach(button => {
             button.addEventListener('click', () => {
                 const targetId = button.getAttribute('data-target');
 
+                // Eliminar clase 'active' de todos los botones
+                buttons.forEach(btn => btn.classList.remove('active'));
+
+                // Agregar clase 'active' al botón clicado
+                button.classList.add('active');
+
+                // Ocultar todas las secciones
                 sections.forEach(section => {
                     section.classList.remove('active');
                 });
 
+                // Mostrar la sección seleccionada
                 const targetSection = document.getElementById(targetId);
                 if (targetSection) {
                     targetSection.classList.add('active');
@@ -129,4 +136,5 @@
         });
     });
 </script>
+
 {% endblock %}
